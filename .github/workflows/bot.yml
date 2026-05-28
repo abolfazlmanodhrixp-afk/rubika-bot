@@ -1,0 +1,21 @@
+name: ربات همیشه آنلاین
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    - name: Install
+      run: pip install rubka
+    - name: Run
+      run: python bot.py
+      add workflow
